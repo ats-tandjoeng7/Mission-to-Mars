@@ -125,7 +125,7 @@ The bar charts in Fig. 1, 2, and 3 provided further visualization of the monthly
 **Fig. 4 Mars solar longitude Ls by Martian month**
 
 #### Martian Year in Earth Days
-Besides using the visual estimation, I revealed that we could statistically derive the number of Mars sols for Mars to orbit the Sun once by converting the elapsed sol data into monthly sol durations and accumulating the aggregate durations of 12 Martian months. The code snippet that returned an approximation of **675.710 sols** in a Martian year is shown below. And, by extracting sol range in the whole dataset using `sol_range = mars_df['sol'].max() - mars_df['sol'].min()`, we could then get the total orbital periods or Martian years by calculating the `sol_range/sols` ratio.
+Besides using the visual estimation, I revealed that we could statistically derive the number of Mars sols for Mars to orbit the Sun once by converting the elapsed sol data into monthly sol durations and accumulating the aggregate durations of 12 Martian months. The code snippet that returned an approximation of **675.710 sols** (cf. **666.780 sols** based on our visual estimation) in a Martian year is shown below. And, by extracting sol range in the whole dataset using `sol_range = mars_df['sol'].max() - mars_df['sol'].min()`, we could then get the total orbital periods or Martian years by calculating the `sol_range/sols` ratio.
 
 ```
 # calculate how many sols exist in a Martian year based on monthly elapsed sols
