@@ -68,7 +68,7 @@ from selenium.webdriver.edge.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 ```
 
-I saved the scraped data into a file in JSON format by using `json.dump()` and verified the stored data by using `json.load()` functions. I also created a Mongo database at the end of this exercise to ensure everything works as expected.
+I saved the scraped data into a file in JSON format by using `json.dump()` and verified the stored data by using `json.load()` functions. I also created a MongoDB database at the end of this exercise to ensure everything works as expected.
 
 ```
 import json
@@ -139,7 +139,7 @@ sol_range = mars_df['sol'].max() - mars_df['sol'].min()
 mars_year = sol_range/sols
 ```
 
-The following code snippet outlined how we derived the number of terrestrial days in a Martian year. I estimated there were about 2.9-3.0 orbital periods in the whole dataset by visually observing the total orbital cycles depicted in the 2D-plots that were created by using Martian elapsed sols as x-axis and daily min temperature as y-axis (Fig. 5). I used the terrestrial day range in the whole dataset and two estimated orbital periods of 2.9 and 3.0 for obtaining an approximation of **685.085 Earth days** in a Martian year.
+The following code snippet outlined how we derived the number of terrestrial days in a Martian year. I estimated there were about 2.9-3.0 orbital periods in the whole dataset by visually observing the total orbital cycles depicted in the 2D-plots that were created by using Martian elapsed sols as x-axis and daily min temperatures as y-axis (Fig. 5). I used the terrestrial day range in the whole dataset and two estimated orbital periods of 2.9 and 3.0 for obtaining an approximation of **685.085 Earth days** in a Martian year.
 
 ```
 # Visually estimate the result from the daily minimum temperature plots
@@ -159,7 +159,7 @@ avg_sols_to_earthdays = tday_range / avg_mars_year
 **Fig. 5 Mars daily min temperature by Mars sol**
 
 ## Summary
-All deliverables have been completed and summarized according to Module 11 assignment requirements, including some extra analyses, computations, and visualizations that we have discussed and presented in [Deliverable 1](#deliverable-1) and [Deliverable 2](#deliverable-2) sections. Our estimates of the length a Martian year in terrestrial days were as high as &pm;0.3% accuracy and well within the 25% requirement, as concluded in the numbers below.
+All deliverables have been completed and summarized according to Module 11 assignment requirements, including some extra analyses, computations, and visualizations as we have discussed and presented in [Deliverable 1](#deliverable-1) and [Deliverable 2](#deliverable-2) sections. The accuracy of our estimates of how many terrestrial days per Martian year was incredibly high with a negligible **&pm;0.3%** deviation from the reported scientific data, as concluded in the numbers below.
 
 ```
 - Exact Earth years in the dataset:                   5.533
