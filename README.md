@@ -26,7 +26,7 @@ This project and Module 11 assignment focused on honing our knowledge and skills
 - Software: [Splinter](https://pypi.org/project/splinter/), [webdriver-manager](https://pypi.org/project/webdriver-manager/), [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/), [Chrome DevTools](https://developer.chrome.com/docs/devtools/overview/), [conda](https://github.com/conda/conda/releases), [Python 3.9](https://docs.python.org/release/3.9.12/), or their newer releases.
 
 ### Challenge Overview
-Our goal was to familiarize ourselves with web scraping, prototyping, modeling, engineering, and exploring the scraped data, which could be applied for uncovering various data facts about the "Red Planet" Mars. Our analysis results were required to scrape certain parts, attributes, and data from two websites relevant to Mars exploration and Mars climate database. We summarized our in-depth data analytics and visualizations of the scraped data, which included bar plots, polar plots, and scatter/line plots. Outline of our deliverables and a written report for presenting our results and analysis summary:
+Our goal was to familiarize ourselves with web scraping, prototyping, modeling, engineering, and exploring the scraped data, which could be applied for uncovering various data facts about the "Red Planet" Mars. Our analysis and visualization required us to scrape certain parts, attributes, and data from two websites relevant to Mars exploration and Mars climate database. We summarized our in-depth data analytics and visualizations of the scraped data, which included bar plots, polar plots, and scatter/line plots. Outline of our deliverables and a written report for presenting our results and analysis summary:
 
 - ☑️ Deliverable 1: Scrape titles and preview text from Mars news articles. Optionally export the data into a JSON file or a MongoDB database.
 - ☑️ Deliverable 2: Scrape and analyze Mars weather data, which exists in a table.
@@ -53,7 +53,7 @@ main branch
 By using several Python libraries/modules, including Pandas, Splinter, Selenium, Chrome DevTools, Beautiful Soup, and Matplotlib, to extract and transform Mars news and climate databases, we were able to explore the climate trends, estimate the Martian seasons and year, and deliver the required visualizations. We also created Matplotlib plots to enable better visualization of the analysis results that let us conduct some in-depth observations and draw more accurate conclusions. I have also adopted some recent techniques and improved approaches that better served our analysis and visualization purposes.
 
 ### Deliverable 1
-The corresponding Jupyter Notebook source code and output JSON file can be referred in [mars_data_challenge_part_1.ipynb](./mars_data_challenge_part_1.ipynb) and [mars_data.json](./Data/mars_data.json). I applied two methods for accomplishing the web scraping of the Mars News. The objective here was for enhancing our understanding of best web scraping methodologies. I revealed that both methods worked well for scraping the required information without problems, though I also noticed that **Method 2** was more robust than **Method 1** in which we were using the deprecated executable_path key for interacting with a website. **Method 2** was especially better when switching to another web browser such as MS-Edge Chromium. The code snippet for enabling `EdgeChromiumDriverManager` from the `webdriver_manager` can be referred below.
+The corresponding Jupyter Notebook source code and output JSON file can be referred in [mars_data_challenge_part_1.ipynb](./mars_data_challenge_part_1.ipynb) and [mars_data.json](./Data/mars_data.json). I applied two methods for accomplishing the web scraping of the Mars News. The objective here was to enhance our understanding of more efficient web scraping methodologies. I revealed that both methods worked well for scraping the required information without problems, though I also noticed that **Method 2** was more robust than **Method 1** in which we were using the deprecated executable_path key for interacting with a website. **Method 2** was especially better when switching to another web browser such as MS-Edge Chromium. The code snippet for enabling `EdgeChromiumDriverManager` from the `webdriver_manager` can be referred below.
 
 1. **Method 1** by using splinter's executable_path and Browser.
 2. **Method 2** by using selenium's webdriver.
@@ -84,7 +84,7 @@ mars_data
 ```
 
 ### Deliverable 2
-The Jupyter Notebook source code used for [Deliverable 2](#deliverable-2) can be reviewed in [mars_data_challenge_part_2.ipynb](./mars_data_challenge_part_2.ipynb). The output csv file is saved as [mars_data.csv](./Data/mars_data.csv). We used the following parameters, cited from Mars facts, for delivering [Deliverable 2](#deliverable-2) requirements. One [Sol](http://www-mars.lmd.jussieu.fr/mars/time/solar_longitude.html) refers to a solar day on Mars, which is also called Mars day or Martian day and 88775.245 seconds (approximately 24.66 hours) long. Terrestrial time (TT) or day refer to a Earth time or day, and one terrestrial day is 86164.0916 seconds (approximately 23.93 hours) long.
+The Jupyter Notebook source code used for [Deliverable 2](#deliverable-2) can be reviewed in [mars_data_challenge_part_2.ipynb](./mars_data_challenge_part_2.ipynb). The output csv file is saved as [mars_data.csv](./Data/mars_data.csv). We used the following parameters, cited from Mars facts, for delivering [Deliverable 2](#deliverable-2) requirements. One [Sol](http://www-mars.lmd.jussieu.fr/mars/time/solar_longitude.html) refers to a solar day on Mars, which is also called Mars day or Martian day and 88775.245 seconds (approximately 24.66 hours) long. Terrestrial time (TT) or day refer to an Earth time or day, and one terrestrial day is 86164.0916 seconds (approximately 23.93 hours) long.
 
 - 1 Earth day = 86164.0916 seconds or 23.93 hours.
 - 1 Earth year = 365.25 days (days for Earth to orbit the Sun once).
@@ -94,7 +94,7 @@ The Jupyter Notebook source code used for [Deliverable 2](#deliverable-2) can be
 There were **12 Martian months** in the dataset that we scraped, which I verified by running `mars_months = np.unique(mars_df['month'])`.
 
 #### Monthly Average Climate Trends on Mars
-The coldest and warmest months on Mars were Martian Month of **3** (-83.31&deg;F) and **8** (-68.38&deg;F) as presented in **Table 1**. The coldest daily min temperature of -90.0&deg;F was recorded on terrestrial_date 2015-12-09, which was a day in Martian Month of **3**, however the warmest daily min temperature of -62.0&deg;F was recorded on terrestrial_date 2017-05-10, which was actually a day in Martian Month of **1** instead of **8**.
+The coldest and warmest months on Mars were Martian Month of **3** (-83.31&deg;F) and **8** (-68.38&deg;F) as presented in **Table 1**. The coldest daily min temperature of -90.0&deg;F was recorded on terrestrial_date 2015-12-09, which was a day in Martian Month of **3**, however the warmest daily min temperature of -62.0&deg;F was recorded on terrestrial_date 2017-05-10, which was actually a day in Martian Month of **1** instead of **8**, the warmest month on average.
 
 **Table 1. Coldest and warmest months on Mars**  
 | month	| sol         | ls         | min_temp (&deg;F) | pressure   | ls_rad   |
@@ -139,7 +139,7 @@ sol_range = mars_df['sol'].max() - mars_df['sol'].min()
 mars_year = sol_range/sols
 ```
 
-The following code snippet outlined how we derived the number of terrestrial days in a Martian year. I estimated there were about 2.9-3.0 orbital periods in the whole dataset by visually observing the total orbital cycles depicted in the 2D-plots that could be created by using Martian elapsed sols as x-axis and daily min temperature as y-axis (Fig. 5). I used terrestrial day range and two estimated orbital periods of 2.9 and 3.0 for obtaining an approximation of **685.085 Earth days** in a Martian year.
+The following code snippet outlined how we derived the number of terrestrial days in a Martian year. I estimated there were about 2.9-3.0 orbital periods in the whole dataset by visually observing the total orbital cycles depicted in the 2D-plots that were created by using Martian elapsed sols as x-axis and daily min temperature as y-axis (Fig. 5). I used the terrestrial day range in the whole dataset and two estimated orbital periods of 2.9 and 3.0 for obtaining an approximation of **685.085 Earth days** in a Martian year.
 
 ```
 # Visually estimate the result from the daily minimum temperature plots
