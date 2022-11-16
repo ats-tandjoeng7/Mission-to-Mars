@@ -133,7 +133,6 @@ dmypy.json
 # Adding config.py file
 config.py
 mars_news.ipynb
-mars_data_challenge_part_1.ipynb
 mars_data_challenge_part_2.ipynb
 API_practice.ipynb
 WeatherPy.ipynb

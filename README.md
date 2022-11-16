@@ -21,14 +21,14 @@ This project and Module 11 assignment focused on honing our knowledge and skills
 ### Resources
 - Website: [Mars News](https://redplanetscience.com/), [Mars Temperature Data](https://data-class-mars-challenge.s3.amazonaws.com/Mars/index.html)
 - Source code: mars_data_challenge_part_1.ipynb, mars_data_challenge_part_2.ipynb, mars_news.ipynb
-- Output file: mars_data.json, mars_data.csv
+- Output file: mars_data.json, mars_data_method1.json, mars_data.csv
 - Image file: png files
 - Software: [Splinter](https://pypi.org/project/splinter/), [webdriver-manager](https://pypi.org/project/webdriver-manager/), [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/), [Chrome DevTools](https://developer.chrome.com/docs/devtools/overview/), [conda](https://github.com/conda/conda/releases), [Python 3.9](https://docs.python.org/release/3.9.12/), or their newer releases.
 
 ### Challenge Overview
 Our goal was to familiarize ourselves with web scraping, prototyping, modeling, engineering, and exploring the scraped data, which could be applied for uncovering various data facts about the "Red Planet" Mars. Our analysis and visualization required us to scrape certain parts, attributes, and data from two websites relevant to Mars exploration and Mars climate database. We summarized our in-depth data analytics and visualizations of the scraped data, which included bar plots, polar plots, and scatter/line plots. Outline of our deliverables and a written report for presenting our results and analysis summary:
 
-- ☑️ Deliverable 1: Scrape titles and preview text from Mars news articles. Optionally export the data into a JSON file or a MongoDB database.
+- ☑️ Deliverable 1: Scrape titles and preview texts from Mars news articles. Optionally export the data into a JSON file or a MongoDB database.
 - ☑️ Deliverable 2: Scrape and analyze Mars weather data, which exists in a table.
 - ☑️ Summary: A written report for the data analytics and visualizations (this ["README.md"](./README.md)).
 
@@ -42,6 +42,7 @@ main branch
 |&rarr; [./mars_news.ipynb](./mars_news.ipynb)  
 |&rarr; ./Data/  
   &emsp; |&rarr; [./Data/mars_data.json](./Data/mars_data.json)  
+  &emsp; |&rarr; [./Data/mars_data_method1.json](./Data/mars_data_method1.json)  
   &emsp; |&rarr; [./Data/mars_data.csv](./Data/mars_data.csv)  
   &emsp; |&rarr; [./Data/mars_mintemp.png](./Data/mars_mintemp.png)  
   &emsp; |&rarr; [./Data/mars_pressure.png](./Data/mars_pressure.png)  
@@ -53,7 +54,7 @@ main branch
 By using several Python libraries/modules, including Pandas, Splinter, Selenium, Chrome DevTools, Beautiful Soup, and Matplotlib, to extract and transform Mars news and climate databases, we were able to explore the climate trends, estimate the Martian seasons and year, and deliver the required visualizations. We also created Matplotlib plots to enable better visualization of the analysis results that let us conduct some in-depth observations and draw more accurate conclusions. I have also adopted some recent techniques and improved approaches that better served our analysis and visualization purposes.
 
 ### Deliverable 1
-The corresponding Jupyter Notebook source code and output JSON file can be referred in [mars_data_challenge_part_1.ipynb](./mars_data_challenge_part_1.ipynb) and [mars_data.json](./Data/mars_data.json). I applied two methods for accomplishing the web scraping of the Mars News. The objective here was to enhance our understanding of more efficient web scraping methodologies. I revealed that both methods worked well for scraping the required information without problems, though I also noticed that **Method 2** was more robust than **Method 1** in which we were using the deprecated executable_path key for interacting with a website. **Method 2** was especially better when switching to another web browser such as MS-Edge Chromium. The code snippet for enabling `EdgeChromiumDriverManager` from the `webdriver_manager` can be referred below.
+The corresponding Jupyter Notebook source code and output JSON file can be referred in [mars_data_challenge_part_1.ipynb](./mars_data_challenge_part_1.ipynb), [mars_data.json](./Data/mars_data.json), and [mars_data_method1.json](./Data/mars_data_method1.json). I applied two methods for accomplishing the web scraping of the Mars News. The objective here was to enhance our understanding of more efficient web scraping methodologies. I revealed that both methods worked well for scraping the required information without problems, though I also noticed that **Method 2** was more robust than **Method 1** in which we were using the deprecated executable_path key for interacting with a website. **Method 2** was especially better when switching to another web browser such as MS-Edge Chromium. The code snippet for enabling `EdgeChromiumDriverManager` from the `webdriver_manager` can be referred below.
 
 1. **Method 1** by using splinter's executable_path and Browser.
 2. **Method 2** by using selenium's webdriver.
@@ -68,7 +69,24 @@ from selenium.webdriver.edge.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 ```
 
-I saved the scraped data into a file in JSON format by using `json.dump()` and verified the stored data by using `json.load()` functions. I also created a MongoDB database at the end of this exercise to ensure everything works as expected.
+I saved the scraped data containing all titles and preview texts from Mars news articles into a file in JSON format by using `json.dump()` and verified the stored data by using `json.load()` functions, which could be replicated by using the following code snippets. I also created a MongoDB database at the end of this exercise to ensure everything works as expected.
+
+```
+# Parse the HTML (selenium 4)
+html = driver.page_source
+news_soup = soup(html, 'html.parser')
+slide_elems = news_soup.select('div.list_text')
+
+# Find and store all news article titles and preview texts
+news_list = []
+for elem in slide_elems:
+    # Use the parent element to find the news article title
+    title = elem.find('div', class_='content_title').text
+    # Use the parent element to find the paragraph text
+    preview = elem.find('div', class_='article_teaser_body').text
+    # Append each key-value pair to a list/dict
+    news_list.append({'title': title, 'preview': preview})
+```
 
 ```
 import json
