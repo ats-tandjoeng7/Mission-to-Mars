@@ -120,7 +120,7 @@ The coldest and warmest months on Mars were Martian Month of **3** (-83.31&deg;F
 | 3	    | 1204.406250 |  75.010417 | -83.307292        | 877.322917 | 1.309179 |
 | 8	    |  795.333333 | 224.347518 | -68.382979        | 873.829787 | 3.915603 |
 
-Months with the lowest and highest atmospheric pressure on Mars were Martian Month of **6** (745.05) and **9** (913.31) as presented in **Table 2**. The daily lowest atmospheric pressure of 727.0 was recorded on terrestrial_date 2018-02-27, which was a day in Martian Month of **5** instead of **6**.
+Months with the lowest and highest atmospheric pressure on Mars were Martian Month of **6** (745.05) and **9** (913.31) as presented in **Table 2**. The lowest daily atmospheric pressure of 727.0 was recorded on terrestrial_date 2018-02-27, which was a day in Martian Month of **5** instead of **6**.
 
 **Table 2 Months with the lowest and highest atmospheric pressure on Mars**  
 | month	| sol         | ls         | min_temp (&deg;F) | pressure   | ls_rad   |
@@ -143,7 +143,7 @@ The bar charts in Fig. 1, 2, and 3 provided further visualization of the monthly
 **Fig. 4 Mars solar longitude Ls by Martian month**
 
 #### Martian Year in Earth Days
-Besides using the visual estimation, I revealed that we could statistically derive the number of Mars sols for Mars to orbit the Sun once by converting the elapsed sol data into monthly sol durations and accumulating the aggregate durations of 12 Martian months. The code snippet that returned an approximation of **675.710 sols** (cf. **666.780 sols** based on our visual estimation) in a Martian year is shown below. And, by extracting sol range in the whole dataset using `sol_range = mars_df['sol'].max() - mars_df['sol'].min()`, we could then get the total orbital periods or Martian years by calculating the `sol_range/sols` ratio.
+Besides using the visual estimation, I revealed that we could statistically derive the number of Mars sols for Mars to orbit the Sun once by converting the elapsed sol data into monthly sol durations and accumulating the aggregate durations of 12 Martian months. The code snippet that returned an approximation of **675.710 sols** (cf. **666.780 sols** based on our visual estimation) in a Martian year is shown below. And, by extracting the sol range in the whole dataset using `sol_range = mars_df['sol'].max() - mars_df['sol'].min()`, we could then get the total orbital periods or Martian years by calculating the `sol_range/sols` ratio.
 
 ```
 # calculate how many sols exist in a Martian year based on monthly elapsed sols
