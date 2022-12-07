@@ -122,7 +122,7 @@ The coldest and warmest months on Mars were Martian Month of **3** (-83.31&deg;F
 
 Months with the lowest and highest atmospheric pressure on Mars were Martian Month of **6** (745.05) and **9** (913.31) as presented in **Table 2**. The lowest daily atmospheric pressure of 727.0 was recorded on terrestrial_date 2018-02-27, which was a day in Martian Month of **5** instead of **6**.
 
-**Table 2 Months with the lowest and highest atmospheric pressure on Mars**  
+**Table 2. Months with the lowest and highest atmospheric pressure on Mars**  
 | month	| sol         | ls         | min_temp (&deg;F) | pressure   | ls_rad   |
 | :--:  |         --: |        --: |         --:       |        --: |      --: |
 | 6     | 750.829932  | 164.897959 | -75.299320        | 745.054422 | 2.878012 |
